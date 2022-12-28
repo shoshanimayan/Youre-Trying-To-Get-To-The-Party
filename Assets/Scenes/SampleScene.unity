@@ -1509,7 +1509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _marker: {fileID: 711475492}
-  _player: {fileID: 0}
+  _player: {fileID: 16212699}
 --- !u!114 &1884841861
 MonoBehaviour:
   m_ObjectHideFlags: 0

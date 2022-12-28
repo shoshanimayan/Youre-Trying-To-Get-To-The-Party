@@ -20,14 +20,14 @@ public class NavigationController : MonoBehaviour
         pos = PointEdge.Item1;
         _marker.SetMarker(pos);
 
-        _graphManager.GetPath(PointEdge.Item2, PointEdge.Item1);
+        _graphManager.GetPath(PointEdge.Item2,_player.CurrentNodes, PointEdge.Item1);
     }
 
     public void SetPositionExact(Vector3 pos, Edge edge)
     {
         
         _marker.SetMarker(pos);
-        _graphManager.GetPath(edge, pos);
+        _graphManager.GetPath(edge, _player.CurrentNodes, pos);
 
     }
 

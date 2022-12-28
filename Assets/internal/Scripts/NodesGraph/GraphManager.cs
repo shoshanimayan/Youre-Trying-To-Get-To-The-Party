@@ -122,9 +122,12 @@ public class GraphManager : MonoBehaviour
         return scan;
     }
 
-    public Vector3[] GetPath(Edge edge, Vector3 FinalPos)
+    public Node[] GetPath(Edge desiredEdge,(Node,Node) currentEdge, Vector3 FinalPos)
     {
-        Vector3[] Path = null;
+
+        Node[] Path = null;
+
+
 
         return Path;
     }

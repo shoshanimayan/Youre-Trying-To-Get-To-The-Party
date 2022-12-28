@@ -24,21 +24,32 @@ public class PlayerHandler : MonoBehaviour
         transform.position = new Vector3(x, y, transform.position.z);
     }
 
-    private IEnumerator AnimateMovement(Vector3[] points)
+    private IEnumerator AnimateMovement(Node[] points)
     {
-        foreach (Vector3 point in points)
+        int index = 0;
+        Node prev = null;
+        foreach (Node point in points)
         {
-            Vector3 endPos = point;
+            Vector3 endPos = point.transform.position;
             Vector3 startPos = transform.position;
             
             float elapsedTime = 0;
-
+            if (index > 0)
+            {
+                CurrentNodes = (prev, point);
+                prev = point;
+            }
             while (elapsedTime < _movementDuration)
             {
                 transform.position = Vector3.Lerp(startPos, endPos, (elapsedTime / _movementDuration));
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
+            if (index == 0)
+            {
+                prev = point;
+            }
+            index++;
         }
 
         _animateCo = null;
@@ -47,15 +58,15 @@ public class PlayerHandler : MonoBehaviour
 
     public (Node, Node)  CurrentNodes = (null,null);
 
-    public void MoveAlongPoints(Vector3[] points)
+    public void MoveAlongNodes(Node[] Nodes)
     {
-        Debug.Log(points);
+        Debug.Log(Nodes);
         if (_animateCo != null)
         {
             StopCoroutine(_animateCo);
             _animateCo = null;
         }
-        _animateCo = StartCoroutine(AnimateMovement(points));
+        _animateCo = StartCoroutine(AnimateMovement(Nodes));
 
     }
 }
