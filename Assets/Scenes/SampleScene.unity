@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afc3b21e80c94841b13760460f3dfd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startNode: {fileID: 975669015}
+  _startNode: {fileID: 1693506726}
   _movementDuration: 1
 --- !u!1 &158682617
 GameObject:

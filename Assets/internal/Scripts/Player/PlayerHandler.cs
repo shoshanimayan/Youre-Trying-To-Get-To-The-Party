@@ -24,7 +24,25 @@ public class PlayerHandler : MonoBehaviour
         transform.position = new Vector3(x, y, transform.position.z);
     }
 
-    private IEnumerator AnimateMovement(Node[] points)
+    private IEnumerator AnimateLastMovement(Vector3 pos)
+    {
+        Vector3 endPos = pos;
+        Vector3 startPos = transform.position;
+
+        float elapsedTime = 0;
+        
+        while (elapsedTime < _movementDuration)
+        {
+            transform.position = Vector3.Lerp(startPos, endPos, (elapsedTime / _movementDuration));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        _animateCo = null;
+
+
+    }
+
+    private IEnumerator AnimateMovement(Node[] points,Vector3 finalPos)
     {
         int index = 0;
         Node prev = null;
@@ -51,14 +69,15 @@ public class PlayerHandler : MonoBehaviour
             }
             index++;
         }
+        _animateCo = StartCoroutine(AnimateLastMovement(finalPos));
 
-        _animateCo = null;
+
     }
 
 
     public (Node, Node)  CurrentNodes = (null,null);
 
-    public void MoveAlongNodes(Node[] Nodes)
+    public void MoveAlongNodes(Node[] Nodes, Vector3 finalPos)
     {
         Debug.Log(Nodes);
         if (_animateCo != null)
@@ -66,7 +85,18 @@ public class PlayerHandler : MonoBehaviour
             StopCoroutine(_animateCo);
             _animateCo = null;
         }
-        _animateCo = StartCoroutine(AnimateMovement(Nodes));
+        _animateCo = StartCoroutine(AnimateMovement(Nodes,finalPos));
 
+    }
+
+
+    public void MovetoPosition(Vector3 finalPos)
+    {
+        if (_animateCo != null)
+        {
+            StopCoroutine(_animateCo);
+            _animateCo = null;
+        }
+        _animateCo = StartCoroutine(AnimateLastMovement(finalPos));
     }
 }

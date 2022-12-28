@@ -42,7 +42,7 @@ public class InputHandler : MonoBehaviour
                 }
                 if (raycastHit.collider.tag == "line")
                 {
-                    _navController.SetPositionExact(new Vector3(raycastHit.point.x, raycastHit.point.y, 0), raycastHit.collider.transform.GetComponent<Line>().edge);
+                    _navController.SetPositionExact(new Vector3(raycastHit.point.x, raycastHit.point.y, 0), raycastHit.collider.transform.parent.GetComponent<Line>().edge);
                     return;
                 }
             }

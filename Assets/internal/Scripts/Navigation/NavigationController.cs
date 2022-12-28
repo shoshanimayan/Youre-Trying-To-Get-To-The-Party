@@ -20,14 +20,23 @@ public class NavigationController : MonoBehaviour
         pos = PointEdge.Item1;
         _marker.SetMarker(pos);
 
-        _graphManager.GetPath(PointEdge.Item2,_player.CurrentNodes, PointEdge.Item1);
+        if (PointEdge.Item2.CompareNodes(_player.CurrentNodes)) 
+        {
+            _player.MovetoPosition(pos);
+        }
+
+        _graphManager.GetPath(PointEdge.Item2,_player.CurrentNodes,_player.transform.position, PointEdge.Item1,new List<Node>(),0);
     }
 
     public void SetPositionExact(Vector3 pos, Edge edge)
     {
         
         _marker.SetMarker(pos);
-        _graphManager.GetPath(edge, _player.CurrentNodes, pos);
+        if (edge.CompareNodes(_player.CurrentNodes))
+        {
+            _player.MovetoPosition(pos);
+        }
+          _graphManager.GetPath(edge, _player.CurrentNodes,_player.transform.position, pos, new List<Node>(), 0);
 
     }
 

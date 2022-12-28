@@ -122,14 +122,43 @@ public class GraphManager : MonoBehaviour
         return scan;
     }
 
-    public Node[] GetPath(Edge desiredEdge,(Node,Node) currentEdge, Vector3 FinalPos)
+    public (List<Node>, float Distance) GetPath(Edge desiredEdge,(Node,Node) currentEdge,Vector3 startPos,  Vector3 FinalPos ,List<Node> path, float distance)
     {
 
-        Node[] Path = null;
+        List<Node> Path1 = path;
+        float newDistance1 = 0;
+        List<Node> Path2 = path;
+        float newDistance2 = 0;
 
+        if (currentEdge.Item1.GetVectors().Length == 0 && currentEdge.Item2.GetVectors().Length == 0)
+        {
+            return (path, distance);
 
+        }
 
-        return Path;
+        if (distance == 0)
+        {
+            newDistance1 = Vector3.Distance(currentEdge.Item1.transform.position, startPos);
+            newDistance2 = Vector3.Distance(currentEdge.Item2.transform.position, startPos);
+
+        }
+
+        //run through
+
+        //run through 
+
+        if (newDistance1 == newDistance2)
+        {
+            return (Path1, newDistance1);
+        }
+        else if (newDistance1 > newDistance2)
+        {
+            return (Path1, newDistance1);
+        }
+        else
+        {
+            return (Path2, newDistance2);
+        }
     }
 
 }
@@ -165,6 +194,13 @@ public class Edge
         return this == e;
     }
 
+
+    public bool CompareNodes((Node, Node) nodes)
+    {
+        HashSet<Node> h1 = new HashSet<Node> { Nodes.Item1, Nodes.Item2 };
+        HashSet<Node> h2 = new HashSet<Node> { nodes.Item1, nodes.Item2 };
+        return h1.SetEquals(h2);
+    }
 
     public Vector3[] GetPositions()
     {
