@@ -38,16 +38,20 @@ public class PlayerHandler : MonoBehaviour
             yield return null;
         }
         _animateCo = null;
+      //  Debug.Log(CurrentNodes.Item1);
+       // Debug.Log(CurrentNodes.Item2);
+
 
 
     }
 
-    private IEnumerator AnimateMovement(Node[] points,Vector3 finalPos)
+    private IEnumerator AnimateMovement(Node[] points,Vector3 finalPos, (Node,Node) GoalNodes)
     {
         int index = 0;
         Node prev = null;
         foreach (Node point in points)
         {
+          //  Debug.Log(point);
             Vector3 endPos = point.transform.position;
             Vector3 startPos = transform.position;
             
@@ -69,23 +73,26 @@ public class PlayerHandler : MonoBehaviour
             }
             index++;
         }
+        _animateCo = null;
+
         _animateCo = StartCoroutine(AnimateLastMovement(finalPos));
 
-
+        CurrentNodes = GoalNodes;
     }
 
 
     public (Node, Node)  CurrentNodes = (null,null);
 
-    public void MoveAlongNodes(Node[] Nodes, Vector3 finalPos)
+    public void MoveAlongNodes(Node[] Nodes, Vector3 finalPos, (Node, Node) GoalNodes)
     {
-        Debug.Log(Nodes);
+       // Debug.Log(Nodes);
         if (_animateCo != null)
         {
+            return;
             StopCoroutine(_animateCo);
             _animateCo = null;
         }
-        _animateCo = StartCoroutine(AnimateMovement(Nodes,finalPos));
+        _animateCo = StartCoroutine(AnimateMovement(Nodes,finalPos,GoalNodes));
 
     }
 
@@ -94,6 +101,8 @@ public class PlayerHandler : MonoBehaviour
     {
         if (_animateCo != null)
         {
+            return;
+
             StopCoroutine(_animateCo);
             _animateCo = null;
         }
