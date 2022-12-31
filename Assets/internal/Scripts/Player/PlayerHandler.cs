@@ -38,8 +38,7 @@ public class PlayerHandler : MonoBehaviour
             yield return null;
         }
         _animateCo = null;
-      //  Debug.Log(CurrentNodes.Item1);
-       // Debug.Log(CurrentNodes.Item2);
+
 
 
 
@@ -51,7 +50,6 @@ public class PlayerHandler : MonoBehaviour
         Node prev = null;
         foreach (Node point in points)
         {
-          //  Debug.Log(point);
             Vector3 endPos = point.transform.position;
             Vector3 startPos = transform.position;
             

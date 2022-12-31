@@ -6,18 +6,12 @@ public class InputHandler : MonoBehaviour
 {
     private NavigationController _navController;
 
-    private float _distance;
 
     private void Awake()
     {
         _navController = GetComponent<NavigationController>();
-        _distance = Mathf.Abs(Camera.main.transform.position.z );
     }
-    void OnMouseDown()
-    {
-        
-
-    }
+   
 
 
     void Update()
@@ -37,7 +31,6 @@ public class InputHandler : MonoBehaviour
             {
                 if (raycastHit.collider != null && raycastHit.collider.tag=="Interact")
                 {
-                    Debug.Log(raycastHit.collider.gameObject);
                     return;
                 }
                 if (raycastHit.collider.tag == "line")
@@ -48,7 +41,10 @@ public class InputHandler : MonoBehaviour
             }
 
             var p = ray.GetPoint(distance);
-             _navController.SetPosition( new Vector3(p.x,p.y,0));
+            if (p != null)
+            {
+                _navController.SetPosition(new Vector3(p.x, p.y, 0));
+            }
 
         }
     }
