@@ -13,6 +13,7 @@ public class MarkerController : MonoBehaviour
     {
         if (_animateCo != null)
         {
+            return;
             StopCoroutine(_animateCo);
             _animateCo = null;
         }
@@ -23,7 +24,7 @@ public class MarkerController : MonoBehaviour
 
     private IEnumerator AnimateMarker()
     {
-        Vector3 endPos = transform.position;
+        Vector3 endPos = new Vector3( transform.position.x, transform.position.y, transform.position.z-.05f);
         Vector3 startPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + _animationOffset);
         transform.position = startPos;
         float elapsedTime = 0;
