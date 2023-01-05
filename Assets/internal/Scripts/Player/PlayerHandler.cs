@@ -8,7 +8,7 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private Node _startNode;
     [SerializeField] float _movementDuration;
     [SerializeField] float _movementSpeed;
-
+    [SerializeField] Transform _character;
 
     private Coroutine _animateCo = null;
 
@@ -28,7 +28,12 @@ public class PlayerHandler : MonoBehaviour
     private IEnumerator AnimateLastMovement(Vector3 pos)
     {
         Vector3 endPos = new Vector3(pos.x,pos.y, transform.position.z);
-
+        float AngleRad = Mathf.Atan2(endPos.y - transform.position.y, endPos.x - transform.position.x);
+        // Get Angle in Degrees
+        float AngleDeg = (180 / Mathf.PI) * AngleRad;
+        // Rotate Object
+        _character.eulerAngles = new Vector3(90, 0,90-AngleDeg);
+     
         while (Vector3.Distance(endPos,transform.position)>0)
         {
             transform.position = Vector3.MoveTowards(transform.position, endPos, _movementSpeed * Time.deltaTime);
@@ -49,7 +54,11 @@ public class PlayerHandler : MonoBehaviour
         {
             Vector3 endPos = new Vector3(point.transform.position.x,  point.transform.position.y, transform.position.z);
             Vector3 startPos = transform.position;
-            
+            float AngleRad = Mathf.Atan2(endPos.y - startPos.y, endPos.x - startPos.x);
+            // Get Angle in Degrees
+            float AngleDeg = (180 / Mathf.PI) * AngleRad;
+            // Rotate Object
+            _character.eulerAngles = new Vector3(90, 0, 90 - AngleDeg);
             if (index > 0)
             {
                 CurrentNodes = (prev, point);
@@ -78,7 +87,6 @@ public class PlayerHandler : MonoBehaviour
 
     public void MoveAlongNodes(Node[] Nodes, Vector3 finalPos, (Node, Node) GoalNodes)
     {
-       // Debug.Log(Nodes);
         if (_animateCo != null)
         {
             return;

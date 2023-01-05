@@ -103,7 +103,6 @@ public class GraphManager : MonoBehaviour
 
     public (List<Node>, float Distance) GetPath(Edge desiredEdge,(Node,Node) currentEdge,Vector3 startPos,  Vector3 FinalPos ,List<Node> path, float distance, int layer=0)
     {
-        Debug.Log(layer);
         List<Node> Path1 = path;
         float newDistance1 = distance;
         List<Node> Path2 = path;
@@ -148,7 +147,6 @@ public class GraphManager : MonoBehaviour
                 {
                     if (n == desiredEdge.Nodes.Item2 || n == desiredEdge.Nodes.Item1)
                     {
-                        Debug.Log(n);
 
                         if (distance1 > Vector3.Distance(first.transform.position, n.transform.position)+newDistance1)
                         {
@@ -171,8 +169,7 @@ public class GraphManager : MonoBehaviour
                         {
                             z += nn.gameObject.name + " ";
                         }
-                        Debug.Log(n);
-                        Debug.Log(z);
+                       
                         if (distance1 > explore.Item2)
                         {
                             distance1 = explore.Item2;
@@ -184,7 +181,6 @@ public class GraphManager : MonoBehaviour
                             {
                                 z += nn.gameObject.name + " ";
                             }
-                            Debug.Log(z);
                         }
                     }
 
@@ -203,7 +199,6 @@ public class GraphManager : MonoBehaviour
             tempPath2.Add(second);
             if (second == desiredEdge.Nodes.Item2 || second == desiredEdge.Nodes.Item1)
             {
-                Debug.Log(second);
                 if (distance2 > Vector3.Distance(second.transform.position, startPos))
                 {
                     distance2 = Vector3.Distance(second.transform.position, startPos);
@@ -217,7 +212,6 @@ public class GraphManager : MonoBehaviour
                     {
                         z += nn.gameObject.name + " ";
                     }
-                    Debug.Log(z);
 
 
                 }
@@ -228,12 +222,8 @@ public class GraphManager : MonoBehaviour
                 {
                     if (n == desiredEdge.Nodes.Item2 || n == desiredEdge.Nodes.Item1)
                     {
-                        Debug.Log(n);
-                        Debug.Log(distance2);
-                        Debug.Log(Vector3.Distance(second.transform.position, n.transform.position) + newDistance2);
                         if (distance2 > Vector3.Distance(second.transform.position, n.transform.position)+newDistance2)
                         {
-                            Debug.Log("head");
                             distance2 = Vector3.Distance(second.transform.position, n.transform.position);
                             var result = new List<Node>();
                             result.AddRange(tempPath2);
@@ -246,7 +236,6 @@ public class GraphManager : MonoBehaviour
                             {
                                 z += nn.gameObject.name + " ";
                             }
-                            Debug.Log(z);
 
                         }
                     }
@@ -261,9 +250,7 @@ public class GraphManager : MonoBehaviour
                         {
                             z += nn.gameObject.name + " ";
                         }
-                        Debug.Log(z);
-                        Debug.Log(n);
-                        Debug.Log(second);
+                       
 
                         if (distance2 > explore.Item2)
                         {
@@ -276,7 +263,6 @@ public class GraphManager : MonoBehaviour
                             {
                                 z += nn.gameObject.name + " ";
                             }
-                            Debug.Log(z);
                         }
                     }
 
@@ -296,21 +282,18 @@ public class GraphManager : MonoBehaviour
             {
                 string v = "";
                 foreach (var i in Path1) { v += (i.name + " "); }
-                Debug.Log(v);
                 return (Path1, newDistance1);
             }
             else if (Path1.Count < Path2.Count)
             {
                 string v = "";
                 foreach (var i in Path1) { v += (i.name + " "); }
-                Debug.Log(v);
                 return (Path1, newDistance1);
 
             }
             else {
                 string v = "";
                 foreach (var i in Path2) { v += (i.name + " "); }
-                Debug.Log(v);
                 return (Path2, newDistance2);
 
             }
@@ -319,14 +302,12 @@ public class GraphManager : MonoBehaviour
         {
             string v = "";
             foreach (var i in Path1) { v += (i.name + " "); }
-            Debug.Log(v);
             return (Path1, newDistance1);
         }
         else
         {
             string v = "";
             foreach (var i in Path2) { v += (i.name + " "); }
-            Debug.Log(v);
             return (Path2, newDistance2);
         }
     }
