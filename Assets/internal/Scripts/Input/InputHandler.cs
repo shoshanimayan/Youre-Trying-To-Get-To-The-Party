@@ -21,7 +21,7 @@ public class InputHandler : MonoBehaviour
            
             var screenPos = Input.mousePosition;
             Ray ray = Camera.main.ScreenPointToRay(screenPos);
-            Plane xy = new Plane(Vector3.forward, Camera.main.transform.rotation.eulerAngles);
+            Plane xy = new Plane(Vector3.forward, new Vector3(-30,0,0));
             float distance;
             xy.Raycast(ray, out distance);
 
@@ -31,6 +31,7 @@ public class InputHandler : MonoBehaviour
             {
                 if (raycastHit.collider != null && raycastHit.collider.tag=="Interact")
                 {
+                    Debug.Log(raycastHit.collider.gameObject);
                     return;
                 }
                 if (raycastHit.collider.tag == "line")

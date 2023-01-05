@@ -98,7 +98,6 @@ public class GraphManager : MonoBehaviour
 
 
         (Vector3, Edge) scan = RaycastAround(pos);
-
         return scan;
     }
 
