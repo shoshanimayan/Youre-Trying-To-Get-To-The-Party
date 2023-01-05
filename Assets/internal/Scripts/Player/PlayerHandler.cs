@@ -27,7 +27,7 @@ public class PlayerHandler : MonoBehaviour
 
     private IEnumerator AnimateLastMovement(Vector3 pos)
     {
-        Vector3 endPos = pos;
+        Vector3 endPos = new Vector3(pos.x,pos.y, transform.position.z);
 
         while (Vector3.Distance(endPos,transform.position)>0)
         {
@@ -47,7 +47,7 @@ public class PlayerHandler : MonoBehaviour
         Node prev = null;
         foreach (Node point in points)
         {
-            Vector3 endPos = point.transform.position;
+            Vector3 endPos = new Vector3(point.transform.position.x,  point.transform.position.y, transform.position.z);
             Vector3 startPos = transform.position;
             
             if (index > 0)
