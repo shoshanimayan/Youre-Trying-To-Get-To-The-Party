@@ -7,6 +7,7 @@ public class PlayerHandler : MonoBehaviour
 
     [SerializeField] private Node _startNode;
     [SerializeField] float _movementDuration;
+    [SerializeField] float _movementSpeed;
 
 
     private Coroutine _animateCo = null;
@@ -27,14 +28,10 @@ public class PlayerHandler : MonoBehaviour
     private IEnumerator AnimateLastMovement(Vector3 pos)
     {
         Vector3 endPos = pos;
-        Vector3 startPos = transform.position;
 
-        float elapsedTime = 0;
-        
-        while (elapsedTime < _movementDuration)
+        while (Vector3.Distance(endPos,transform.position)>0)
         {
-            transform.position = Vector3.Lerp(startPos, endPos, (elapsedTime / _movementDuration));
-            elapsedTime += Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, endPos, _movementSpeed * Time.deltaTime);
             yield return null;
         }
         _animateCo = null;
@@ -53,16 +50,14 @@ public class PlayerHandler : MonoBehaviour
             Vector3 endPos = point.transform.position;
             Vector3 startPos = transform.position;
             
-            float elapsedTime = 0;
             if (index > 0)
             {
                 CurrentNodes = (prev, point);
                 prev = point;
             }
-            while (elapsedTime < _movementDuration)
+            while (Vector3.Distance(endPos, transform.position) > 0)
             {
-                transform.position = Vector3.Lerp(startPos, endPos, (elapsedTime / _movementDuration));
-                elapsedTime += Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, endPos, _movementSpeed * Time.deltaTime);
                 yield return null;
             }
             if (index == 0)
@@ -87,8 +82,7 @@ public class PlayerHandler : MonoBehaviour
         if (_animateCo != null)
         {
             return;
-            StopCoroutine(_animateCo);
-            _animateCo = null;
+            
         }
         _animateCo = StartCoroutine(AnimateMovement(Nodes,finalPos,GoalNodes));
 
@@ -101,9 +95,13 @@ public class PlayerHandler : MonoBehaviour
         {
             return;
 
-            StopCoroutine(_animateCo);
-            _animateCo = null;
+            
         }
         _animateCo = StartCoroutine(AnimateLastMovement(finalPos));
+    }
+
+    public bool CoroutineRunning()
+    {
+        return _animateCo != null;
     }
 }

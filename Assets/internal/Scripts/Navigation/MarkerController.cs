@@ -14,13 +14,14 @@ public class MarkerController : MonoBehaviour
         if (_animateCo != null)
         {
             return;
-            StopCoroutine(_animateCo);
-            _animateCo = null;
+            
         }
 
         transform.position = pos;
         _animateCo= StartCoroutine(AnimateMarker());
     }
+
+    
 
     private IEnumerator AnimateMarker()
     {

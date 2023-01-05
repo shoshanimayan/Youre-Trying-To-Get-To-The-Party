@@ -237,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startNode: {fileID: 1693506726}
   _movementDuration: 1
+  _movementSpeed: 0.5
 --- !u!1 &158682617
 GameObject:
   m_ObjectHideFlags: 0
