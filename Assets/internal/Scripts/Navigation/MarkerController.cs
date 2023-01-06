@@ -9,8 +9,19 @@ public class MarkerController : MonoBehaviour
 
     private Coroutine _animateCo=null;
 
+
+    private void Awake()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void SetMarker(Vector3 pos)
     {
+        if (!gameObject.activeSelf)
+        {
+            gameObject.SetActive(true);
+        }
+
         if (_animateCo != null)
         {
             return;
