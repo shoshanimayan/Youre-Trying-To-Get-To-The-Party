@@ -50,7 +50,6 @@ public class InteractableEnvironment3D :BaseInteractable
             base._detected = value;
             if (value)
             {
-                Debug.Log(1);
 
                 OnDetected();
             }

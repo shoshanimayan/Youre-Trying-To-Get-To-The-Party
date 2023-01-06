@@ -30,7 +30,18 @@ public  class BaseInteractable : MonoBehaviour
     
     }
 
+    public virtual void OnClicked()
+    { 
+    
+    }
 
+
+    protected bool _interactable;
+
+    public bool IsInteractable()
+    {
+        return _interactable;
+    }
 
     public bool IsDetected()
     {
