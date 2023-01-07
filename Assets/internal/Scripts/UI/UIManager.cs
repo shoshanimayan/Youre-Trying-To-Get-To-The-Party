@@ -101,8 +101,8 @@ public class UIManager : MonoBehaviour
             int visibleCount = counter % (TotalVisibleCharacters + 1);
 
             text.maxVisibleCharacters = visibleCount;
+            AudioManager.PlayTextClip();
 
-            //if (visibleCount >= TotalVisibleCharacters) { yield return new WaitForSeconds(1); }
             counter++;
             yield return new WaitForSeconds(.05f);
         }
@@ -115,8 +115,7 @@ public class UIManager : MonoBehaviour
         _text.text = text;
         if (text.Length > 0)
         {
-            Debug.Log(text);
-            Debug.Log(_text.maxVisibleCharacters);
+           
 
             StartCoroutine(RevealText(_text));
         }

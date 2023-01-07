@@ -57,6 +57,8 @@ public class PlayerHandler : MonoBehaviour
 
     private IEnumerator AnimateLastMovement(Vector3 pos)
     {
+        AudioManager.PlayWalking();
+
         Vector3 endPos = new Vector3(pos.x,pos.y, transform.position.z);
         float AngleRad = Mathf.Atan2(endPos.y - transform.position.y, endPos.x - transform.position.x);
         // Get Angle in Degrees
@@ -71,6 +73,7 @@ public class PlayerHandler : MonoBehaviour
             yield return null;
         }
         _animateCo = null;
+        AudioManager.StopWalking();
 
 
 
@@ -79,6 +82,7 @@ public class PlayerHandler : MonoBehaviour
 
     private IEnumerator AnimateMovement(Node[] points,Vector3 finalPos, (Node,Node) GoalNodes)
     {
+        AudioManager.PlayWalking();
         int index = 0;
         Node prev = null;
         foreach (Node point in points)

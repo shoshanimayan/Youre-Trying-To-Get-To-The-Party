@@ -36,7 +36,6 @@ public class InputHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Escape key was pressed");
             if (GameManager.GetState() != State.Paused)
             {
                 _uiManager.TogglePause(true);

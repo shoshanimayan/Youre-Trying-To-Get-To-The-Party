@@ -4,30 +4,71 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource _music;
-    [SerializeField] private AudioSource _audioEffect;
+    [SerializeField] private  AudioSource _music;
+    [SerializeField] private  AudioSource _audioEffect;
 
-    public void ToggleMusic(bool toggle)
+    [Header("Audio")]
+    [SerializeField] private AudioClip _markerAudio;
+    [SerializeField] private  AudioClip _walkingAudio;
+    [SerializeField] private AudioClip _textAudio;
+
+
+
+     private static AudioSource s_music;
+     private static AudioSource s_audioEffect;
+
+   
+     private static AudioClip s_markerAudio;
+     private static AudioClip s_walkingAudio;
+     private static AudioClip s_textAudio;
+
+
+    public void OnAfterDeserialize()
+    {
+        s_music = _music;
+        s_audioEffect = _audioEffect;
+        s_markerAudio = _markerAudio;
+        s_walkingAudio = _walkingAudio;
+        s_textAudio = _textAudio;
+    }
+
+
+        public static void ToggleMusic(bool toggle)
     {
         if (toggle)
         {
-            _music.Play();
+            s_music.Play();
         }
         else
         {
-            _music.Stop();
+            s_music.Stop();
         }
     }
 
 
-    public void PlayEffectOnce()
-    { 
-    
+    public static void PlayTextClip()
+    {
+        s_audioEffect.PlayOneShot(s_textAudio);
     }
 
-    public void PlayEffectLoop()
+    public static void PlayMarkerClip()
     {
-    
+        s_audioEffect.PlayOneShot(s_markerAudio);
     }
+
+    public static void PlayWalking()
+    {
+        s_audioEffect.clip = s_walkingAudio;
+        s_audioEffect.loop = true;
+       s_audioEffect.Play();
+    }
+
+    public static void StopWalking()
+    {
+        s_audioEffect.loop = false;
+        s_audioEffect.Stop();
+    }
+
+
 
 }

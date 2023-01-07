@@ -47,7 +47,7 @@ public class MarkerController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
+        AudioManager.PlayMarkerClip();
         _animateCo = null;
     }
 }
