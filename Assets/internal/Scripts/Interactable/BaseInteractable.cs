@@ -5,6 +5,8 @@ using UnityEngine;
 public  class BaseInteractable : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] float _requiredDistance = 0.3f;
+
 
     protected bool _detected;
 
@@ -35,6 +37,10 @@ public  class BaseInteractable : MonoBehaviour
     
     }
 
+    public float GetDistanceRequirement()
+    {
+        return _requiredDistance;
+    }
 
     protected bool _interactable;
 

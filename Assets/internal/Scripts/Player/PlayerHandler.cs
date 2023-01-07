@@ -7,7 +7,6 @@ public class PlayerHandler : MonoBehaviour
 
     [SerializeField] private Node _startNode;
     [SerializeField] float _movementSpeed;
-    [SerializeField] float _distance=1;
     [SerializeField] Transform _character;
    
 
@@ -34,7 +33,7 @@ public class PlayerHandler : MonoBehaviour
     {
         foreach (var obj in _interactables)
         {
-            if((transform.position - obj.transform.position).magnitude <= _distance)
+            if((transform.position - obj.transform.position).magnitude <= obj.GetDistanceRequirement())
             {
                 if (!obj.IsDetected())
                 {
