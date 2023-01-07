@@ -22,8 +22,7 @@ public class AudioManager : MonoBehaviour
      private static AudioClip s_walkingAudio;
      private static AudioClip s_textAudio;
 
-
-    public void OnAfterDeserialize()
+    void Awake()
     {
         s_music = _music;
         s_audioEffect = _audioEffect;

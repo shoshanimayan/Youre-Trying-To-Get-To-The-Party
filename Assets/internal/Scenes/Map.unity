@@ -2713,9 +2713,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ea931a94042c7424aa452fccd1c97168, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3467,9 +3467,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _music: {fileID: 1640555434}
   _audioEffect: {fileID: 162203701}
-  _markerAudio: {fileID: 0}
-  _walkingAudio: {fileID: 0}
-  _textAudio: {fileID: 0}
+  _markerAudio: {fileID: 8300000, guid: 21a0ac36ac4316f46a6ca3ffd26e804d, type: 3}
+  _walkingAudio: {fileID: 8300000, guid: 9f96c8d3fef6ab440bdc9bd4ad3d08fe, type: 3}
+  _textAudio: {fileID: 8300000, guid: caf99f9d0756838498a49fda9bfac52a, type: 3}
 --- !u!224 &1884841866
 RectTransform:
   m_ObjectHideFlags: 0

@@ -40,6 +40,7 @@ public class MarkerController : MonoBehaviour
         Vector3 startPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + _animationOffset);
         transform.position = startPos;
         float elapsedTime = 0;
+        AudioManager.PlayMarkerClip();
 
         while (elapsedTime < _animationDuration)
         {
@@ -47,7 +48,6 @@ public class MarkerController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        AudioManager.PlayMarkerClip();
         _animateCo = null;
     }
 }
