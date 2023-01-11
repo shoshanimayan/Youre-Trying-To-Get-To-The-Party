@@ -15,12 +15,14 @@ public class PauseController : MonoBehaviour
     }
     public void ToMenu()
     {
-        
+        AudioManager.PlayTextClip();
+        GameManager.ToMenu();
     }
 
 
     public void Unpause()
     {
+        AudioManager.PlayTextClip();
         _uIManager.TogglePause(false);
     }
 }

@@ -13,11 +13,18 @@ public class GameManager : MonoBehaviour
 
     private static UIManager _uiManager;
     private static TextReader _textReader;
+
+    public static SceneController _sceneController { get; private set; }
+    
     private void Awake()
     {
         _uiManager = GetComponent<UIManager>();
         _state = State.Text;
-        _textReader = new TextReader();
+        var  root= (GameObject.Find("Root"));
+        if (root && root.GetComponent<SceneController>())
+        {
+            _sceneController = root.GetComponent<SceneController>();
+        }
 
 
     }
@@ -29,7 +36,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-
+    public static void ToMenu()
+    {
+        if (_sceneController)
+        {
+            _sceneController.LoadMenu();
+        }
+    }
 
     public static void Pause()
     {
@@ -60,6 +73,8 @@ public class GameManager : MonoBehaviour
     {
         return _canTouch;
     }
+
+
 
     public static void setTouch(bool CanTouch)
     {
