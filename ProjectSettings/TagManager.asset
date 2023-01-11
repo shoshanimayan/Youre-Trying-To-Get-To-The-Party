@@ -9,6 +9,7 @@ TagManager:
   - Interact
   - marker
   - line
+  - MenuCamera
   layers:
   - Default
   - TransparentFX

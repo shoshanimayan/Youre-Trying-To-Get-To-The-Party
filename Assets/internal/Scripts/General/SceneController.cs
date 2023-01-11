@@ -14,12 +14,12 @@ public  class SceneController : MonoBehaviour
 
     private AsyncOperationHandle<SceneInstance> _handle;
     private bool _unloaded=true;
-
+    private Camera _menuCamera;
     // Start is called before the first frame update
     private void Awake()
     {
         Application.targetFrameRate = 30;
-
+        _menuCamera = transform.GetChild(0).GetComponent<Camera>();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -45,20 +45,24 @@ public  class SceneController : MonoBehaviour
     {
         if (obj.Status == AsyncOperationStatus.Succeeded)
         {
+            _menuCamera.gameObject.SetActive(false);
             _handle = obj;
             _unloaded = false;
-            
+            Debug.Log(obj.Result);
         }
     }
 
     private void UnloadScene()
     {
         Debug.Log("unloading level");
+        _menuCamera.gameObject.SetActive(true);
 
         Addressables.UnloadSceneAsync(_handle, true).Completed += op =>
         {
             if (op.Status == AsyncOperationStatus.Succeeded)
+            {
                 Debug.Log("Successfully unloaded scene.");
+            }
             else
             {
                 Debug.Log(op.Status.ToString());
