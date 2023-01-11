@@ -55,4 +55,9 @@ public class InteractableEnvironment3D :BaseInteractable
             }
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireMesh(GetComponent<MeshFilter>().sharedMesh, -1, transform.position, transform.rotation, transform.localScale);
+    }
 }

@@ -62,5 +62,5 @@ public  class BaseInteractable : MonoBehaviour
 
     public virtual  bool Detected { get; set; }
 
-
+    
 }

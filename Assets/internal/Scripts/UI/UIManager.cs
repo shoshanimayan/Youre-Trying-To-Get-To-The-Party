@@ -84,7 +84,6 @@ public class UIManager : MonoBehaviour
 
         if (callbackText != null)
         {
-            Debug.Log(callbackText);
             SetText(callbackText);
             yield return null;
 

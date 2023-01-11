@@ -46,4 +46,9 @@ public class InteractableEnvironment2D : BaseInteractable
             }
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position, transform.localScale/6);
+    }
 }

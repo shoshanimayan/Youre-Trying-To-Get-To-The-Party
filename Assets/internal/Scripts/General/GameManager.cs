@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public enum State {Paused, Map, Text,Menu,Loading}
 [RequireComponent(typeof(UIManager))]
@@ -11,13 +12,12 @@ public class GameManager : MonoBehaviour
     private static bool _canTouch;
 
     private static UIManager _uiManager;
+    private static TextReader _textReader;
     private void Awake()
     {
         _uiManager = GetComponent<UIManager>();
-
         _state = State.Text;
-
-        _uiManager.SetTextMode(true, "test Text\n(Click To Continue)");
+        _textReader = new TextReader();
 
 
     }
@@ -25,10 +25,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _uiManager.SetTextMode(true, "test Text\n(Click To Continue)");
+
     }
 
-    
+
 
     public static void Pause()
     {
@@ -65,9 +66,9 @@ public class GameManager : MonoBehaviour
         _canTouch = CanTouch;
     }
     //read asset and send string to ui manager
-    public static void SetTextMode()
+    public static void SetTextMode(AssetReference asset)
     { 
-    
+        
     }
 
     
