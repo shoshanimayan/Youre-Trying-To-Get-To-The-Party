@@ -62,7 +62,7 @@ public class Interactable2D : InteractableEnvironment2D
         _stopped = true;
 
         if (_fadeCor != null) { StopCoroutine(_fadeCor); }
-        StartCoroutine(FadeOutline(true));
+        if(!_clickedOn)StartCoroutine(FadeOutline(true));
     }
 
     void OnMouseExit()
@@ -82,6 +82,10 @@ public class Interactable2D : InteractableEnvironment2D
         {
             _clickedOn = true;
             GameManager.ReadTextAsset(_addressableTextAsset);
+            _stopped = true;
+            var tempColor = _outline.color;
+            tempColor.a = 0;
+            _outline.color = tempColor;
         }
     }
 }
