@@ -4174,6 +4174,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455378631297751621, guid: 0af02726685974844abb04590079e948, type: 3}
+      propertyPath: _endGameBool
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455378631297751621, guid: 0af02726685974844abb04590079e948, type: 3}
       propertyPath: _addressableTextAsset.m_AssetGUID
       value: 980e5d6d6dc416740ac119a64d7aafc2
       objectReference: {fileID: 0}

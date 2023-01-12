@@ -131,9 +131,16 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeCanvas(_gameCanvas, false));
-            StartCoroutine(FadeCanvas(_textCanvas, true,""));
-            GameManager.ToMap();
+            if (!GameManager.IsGameEnding())
+            {
+                StartCoroutine(FadeCanvas(_gameCanvas, false));
+                StartCoroutine(FadeCanvas(_textCanvas, true, ""));
+                GameManager.ToMap();
+            }
+            else
+            {
+                GameManager.EndGame();
+            }
         }
     
     }

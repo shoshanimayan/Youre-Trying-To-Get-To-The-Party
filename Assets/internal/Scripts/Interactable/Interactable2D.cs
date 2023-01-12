@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class Interactable2D : InteractableEnvironment2D
 {
     [SerializeField] private AssetReference _addressableTextAsset = null;
-     private Image _outline;
+    [SerializeField] private bool _endGameBool = false;
+
+    private Image _outline;
     private Coroutine _fadeCor = null;
     private bool _stopped;
     private bool _clickedOn;
@@ -80,6 +82,10 @@ public class Interactable2D : InteractableEnvironment2D
     {
         if (_addressableTextAsset!=null && !_clickedOn)
         {
+            if (_endGameBool) 
+            {
+                GameManager.PrepEndGame();
+            }
             _clickedOn = true;
             GameManager.ReadTextAsset(_addressableTextAsset);
             _stopped = true;

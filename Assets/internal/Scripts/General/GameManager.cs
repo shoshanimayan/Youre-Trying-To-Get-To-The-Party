@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private static UIManager _uiManager;
     private static TextReader _textReader;
-
+    private static bool _endGame;
     public static SceneController _sceneController { get; private set; }
     
     private void Awake()
@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
         _state = State.Paused;
     }
 
+   
+
     public static void ToMap()
     {
         _state = State.Map;
@@ -80,6 +82,17 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public static void PrepEndGame()
+    {
+        _endGame = true;
+    }
+
+    public static void EndGame() 
+    {
+        ToMenu();
+    }
+
+    public static bool IsGameEnding() { return _endGame; }
 
     public static void setTouch(bool CanTouch)
     {
