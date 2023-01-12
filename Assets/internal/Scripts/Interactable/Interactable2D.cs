@@ -10,6 +10,7 @@ public class Interactable2D : InteractableEnvironment2D
      private Image _outline;
     private Coroutine _fadeCor = null;
     private bool _stopped;
+    private bool _clickedOn;
     public override void Initialize()
     {
         base.Initialize();
@@ -77,6 +78,10 @@ public class Interactable2D : InteractableEnvironment2D
 
     public override void OnClicked()
     {
-        //communicate reader transition
+        if (_addressableTextAsset!=null && !_clickedOn)
+        {
+            _clickedOn = true;
+            GameManager.ReadTextAsset(_addressableTextAsset);
+        }
     }
 }

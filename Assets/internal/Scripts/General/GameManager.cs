@@ -8,6 +8,10 @@ public enum State {Paused, Map, Text,Menu,Loading}
 [RequireComponent(typeof(AudioManager))]
 public class GameManager : MonoBehaviour
 {
+
+    [SerializeField] private AssetReference _addressableTextAsset = null;
+
+
     private static State _state;
     private static bool _canTouch;
 
@@ -18,6 +22,7 @@ public class GameManager : MonoBehaviour
     
     private void Awake()
     {
+        _textReader = new TextReader();
         _uiManager = GetComponent<UIManager>();
         _state = State.Text;
         var  root= (GameObject.Find("Root"));
@@ -32,7 +37,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _uiManager.SetTextMode(true, "test Text\n(Click To Continue)");
+        ReadTextAsset(_addressableTextAsset);
 
     }
 
@@ -81,11 +86,17 @@ public class GameManager : MonoBehaviour
         _canTouch = CanTouch;
     }
     //read asset and send string to ui manager
-    public static void SetTextMode(AssetReference asset)
-    { 
-        
+    public static void SetTextMode(string text)
+    {
+        _uiManager.SetTextMode(true, text);
+
     }
 
-    
+    public static void ReadTextAsset(AssetReference addressableTextAsset)
+    {
+        _textReader.ReadAddressableTextAsset(addressableTextAsset);
+    }
+
+
 
 }
