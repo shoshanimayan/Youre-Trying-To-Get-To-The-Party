@@ -62,6 +62,11 @@ public class AudioManager : MonoBehaviour
        s_audioEffect.Play();
     }
 
+    public static void EnableAudioEffects(bool enable) 
+    {
+        s_audioEffect.enabled = enable;
+    }
+
     public static void StopWalking()
     {
         s_audioEffect.loop = false;

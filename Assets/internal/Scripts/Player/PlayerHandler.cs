@@ -68,6 +68,15 @@ public class PlayerHandler : MonoBehaviour
 
         while (Vector3.Distance(endPos,transform.position)>0)
         {
+            if (GameManager.GetState() == State.Paused)
+            {
+                AudioManager.EnableAudioEffects(false);
+
+                yield return null;
+                continue;
+            }
+            AudioManager.EnableAudioEffects(true);
+
             transform.position = Vector3.MoveTowards(transform.position, endPos, _movementSpeed * Time.deltaTime);
             yield return null;
         }
@@ -102,6 +111,15 @@ public class PlayerHandler : MonoBehaviour
             }
             while (Vector3.Distance(endPos, transform.position) > 0)
             {
+                if (GameManager.GetState() == State.Paused)
+                {
+                    AudioManager.EnableAudioEffects(false);
+
+                    yield return null;
+                    continue;
+                }
+                AudioManager.EnableAudioEffects(true);
+
                 transform.position = Vector3.MoveTowards(transform.position, endPos, _movementSpeed * Time.deltaTime);
                 yield return null;
             }

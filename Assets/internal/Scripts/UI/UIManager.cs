@@ -95,8 +95,12 @@ public class UIManager : MonoBehaviour
         GameManager.setTouch(false);
         var TotalVisibleCharacters =text.text.Length;
         int counter = 0;
-        while (counter<TotalVisibleCharacters+1)
+        while (counter<TotalVisibleCharacters+1 )
         {
+            if (GameManager.GetState() == State.Paused) {
+                yield return null;
+                continue; 
+            }
             int visibleCount = counter % (TotalVisibleCharacters + 1);
 
             text.maxVisibleCharacters = visibleCount;
