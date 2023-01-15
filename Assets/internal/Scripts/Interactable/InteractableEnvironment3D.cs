@@ -12,7 +12,7 @@ public class InteractableEnvironment3D :BaseInteractable
         var tempColor = _render.material.color;
         _render.enabled = true;
 
-        _render.material.DisableKeyword("_EMISSION");
+       // _render.material.DisableKeyword("_EMISSION");
 
         for (float i = 0; i <= 1; i += Time.deltaTime/2)
         {
@@ -20,7 +20,7 @@ public class InteractableEnvironment3D :BaseInteractable
             _render.material.color = tempColor;
             yield return null;
         }
-        _render.material.EnableKeyword("_EMISSION");
+      //  _render.material.EnableKeyword("_EMISSION");
 
     }
 
