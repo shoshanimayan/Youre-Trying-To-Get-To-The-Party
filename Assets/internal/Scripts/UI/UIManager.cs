@@ -97,7 +97,7 @@ public class UIManager : MonoBehaviour
         int counter = 0;
         while (counter<TotalVisibleCharacters+1 )
         {
-            if (GameManager.GetState() == State.Paused) {
+            if (GameManager.GetState() != State.Text) {
                 yield return null;
                 continue; 
             }

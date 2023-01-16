@@ -68,7 +68,7 @@ public class PlayerHandler : MonoBehaviour
 
         while (Vector3.Distance(endPos,transform.position)>0)
         {
-            if (GameManager.GetState() == State.Paused)
+            if (GameManager.GetState() != State.Map)
             {
                 AudioManager.EnableAudioEffects(false);
 
@@ -111,7 +111,7 @@ public class PlayerHandler : MonoBehaviour
             }
             while (Vector3.Distance(endPos, transform.position) > 0)
             {
-                if (GameManager.GetState() == State.Paused)
+                if (GameManager.GetState() != State.Map)
                 {
                     AudioManager.EnableAudioEffects(false);
 
