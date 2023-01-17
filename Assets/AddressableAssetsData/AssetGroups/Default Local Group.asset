@@ -29,6 +29,46 @@ MonoBehaviour:
     m_Address: Test
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 2c47820a1a8f3524b8539744de564c3d
+    m_Address: intro
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 49986b6a06a0067428d79a8a12187167
+    m_Address: lot_end
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 11e7c9c99331f4844b486d608dd03be5
+    m_Address: hole
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 49b01d31904d08446bae609e5880593e
+    m_Address: tree
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 42f05367b07429b44a32268bf35cbccf
+    m_Address: house
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c5a15d6a8d1248c4994aa0941290eec4
+    m_Address: church
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5861966af08349544a682e69d783d1a3
+    m_Address: stop
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: db5d7f7dedda64b4797342598cb28e69
+    m_Address: car
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eceb82d4c51edfd49a807cf32f96c6c7
+    m_Address: pyramid
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4d5bffbd2b433d240bfaebd0ceb51886
+    m_Address: plane
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b250111b4633e5541bd44721e43d2055, type: 2}
   m_SchemaSet:
