@@ -879,7 +879,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: You're Trying To Get To The Party But All You Have Is A Poorly Drawn Map
-    And Bad Instructions
+    And Bad Directions.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce0bffcfd47a8164399d29f4a89bc522, type: 2}
   m_sharedMaterial: {fileID: 1140442708100503514, guid: ce0bffcfd47a8164399d29f4a89bc522, type: 2}
